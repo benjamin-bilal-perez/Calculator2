@@ -14,16 +14,13 @@ public class Main {
         calculator.operation();
 
 
-
-        System.out.println(calculator.getResult());
-
         // System.out.println(calculator.getResult());
 
-        BasicOperations basic = new BasicOperations(1, 2);
+        /*BasicOperations basic = new BasicOperations(1, 2);
         basic.sum();
         System.out.println(basic.getResult());
         System.out.println(basic.getOperator1());
-        System.out.println(basic.getOperator2());
+        System.out.println(basic.getOperator2());*/
         /*System.out.println(basic.getOperator1());
         System.out.println(basic.getOperator2());*/
     }
