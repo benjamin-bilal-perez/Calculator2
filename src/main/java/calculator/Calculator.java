@@ -1,6 +1,7 @@
 package calculator;
 
-// import basic.BasicOperations;
+import basic.BasicOperations;
+
 import java.util.Scanner;
 
 public class Calculator {
@@ -21,6 +22,10 @@ public class Calculator {
 
     public void operation() {
         System.out.println("Write the operation symbol");
+        System.out.println("sum: +\n" +
+                "subtraction: -\n" +
+                "multiplication: *\n" +
+                "division: /");
         input = scanner.nextLine();
 
         //BasicOperations
@@ -72,19 +77,29 @@ public class Calculator {
 
     public void sum() {
         operatorsCatcher();
-        result = operator1 + operator2;
+        BasicOperations operation = new BasicOperations(operator1, operator2);
+        operation.sum();
+        System.out.println("Result: " + operation.getResult());
     }
     public void subtraction() {
+        /*operatorsCatcher();
+        result = operator1 - operator2;*/
         operatorsCatcher();
-        result = operator1 - operator2;
+        BasicOperations operation = new BasicOperations(operator1, operator2);
+        operation.subtraction();
+        System.out.println("Result: " + operation.getResult());
     }
     public void multiplication() {
         operatorsCatcher();
-        result = operator1 * operator2;
+        BasicOperations operation = new BasicOperations(operator1, operator2);
+        operation.multiplication();
+        System.out.println("Result: " + operation.getResult());
     }
     public void division() {
         operatorsCatcher();
-        result = operator1 / operator2;
+        BasicOperations operation = new BasicOperations(operator1, operator2);
+        operation.division();
+        System.out.println("Result: " + operation.getResult());
     }
 
 
@@ -98,7 +113,6 @@ public class Calculator {
     public double getResult() {
         return result;
     }
-
 }
 
 

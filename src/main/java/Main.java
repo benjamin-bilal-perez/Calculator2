@@ -1,4 +1,5 @@
 import calculator.Calculator;
+import basic.BasicOperations;
 import vector.Vector3;
 
 
@@ -12,8 +13,18 @@ public class Main {
         Calculator calculator = new Calculator();
         calculator.operation();
 
-        //BasicOperations basic = new BasicOperations();
+
 
         System.out.println(calculator.getResult());
+
+        // System.out.println(calculator.getResult());
+
+        BasicOperations basic = new BasicOperations(1, 2);
+        basic.sum();
+        System.out.println(basic.getResult());
+        System.out.println(basic.getOperator1());
+        System.out.println(basic.getOperator2());
+        /*System.out.println(basic.getOperator1());
+        System.out.println(basic.getOperator2());*/
     }
 }
