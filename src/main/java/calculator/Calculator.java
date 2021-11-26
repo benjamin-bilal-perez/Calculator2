@@ -3,6 +3,9 @@ package calculator;
 import basic.BasicOperations;
 import matrix.Matrix3x3;
 import matrix.Matrix4x4;
+import vector.Vector2;
+import vector.Vector3;
+import vector.Vector4;
 
 import java.util.Scanner;
 
@@ -50,30 +53,50 @@ public class Calculator {
                 "scalarDivision: matrix4x4ScalarDivision\n" +
                 "equals: matrix3x3Equals\n" +
                 "toString: matrix3x3ToString\n" +
-                "");
+                "\n" +
+                "VECTOR2:\n" +
+                "module: moduleVector2" +
+                "sum: sumVector2\n" +
+                "number multiplication: numMultVector2\n" +
+                "deny: denyVector2\n" +
+                "ScalarProduct: ScalarProductVector2\n" +
+                "equals: equalsVector2\n" +
+                "to string: toStringVector2\n" +
+                "\n" +
+                "VECTOR3:\n" +
+                "module: moduleVector3" +
+                "sum: sumVector3\n" +
+                "number multiplication: numMultVector3\n" +
+                "deny: denyVector3\n" +
+                "scalar product: scalarProductVector3\n" +
+                "equals: equalsVector3\n" +
+                "to string: toStringVector3\n" +
+                "\n" +
+                "VECTOR4:\n" +
+                "module: moduleVector4" +
+                "sum: sumVector4\n" +
+                "number multiplication: numMultVector4\n" +
+                "deny: denyVector4\n" +
+                "ScalarProduct: ScalarProductVector4\n" +
+                "equals: equalsVector4\n" +
+                "to string: toStringVector4\n");
         input = scanner.nextLine();
 
-        //BasicOperations
-
         switch(input) {
-            // Basic operations
+            // Basic operations:
             case "+":
-                // operationSymbol = input;
                 sum();
                 break;
             case "-":
-                //operationSymbol = input;
                 subtraction();
                 break;
             case "*":
-                //operationSymbol = input;
                 multiplication();
                 break;
             case "/":
-                //operationSymbol = input;
                 division();
                 break;
-            // Matrix3x3
+            // Matrix3x3:
             case "matrix3x3Sum":
                 sumMatrix3x3();
                 break;
@@ -119,6 +142,76 @@ public class Calculator {
                 break;
             case "matrix4x4ToString":
                 toStringMatrix4x4();
+                break;
+                // Vector2:
+            case "moduleVector2":
+                moduleVector2();
+                break;
+            case "sumVector2":
+                sumVector2();
+                break;
+            case "numMultVector2":
+                numMultVector2();
+                break;
+            case "denyVector2":
+                denyVector2();
+                break;
+            case "ScalarProductVector2":
+                ScalarProductVector2();
+                break;
+            case "equalsVector2":
+                equalsVector2();
+                break;
+            case "toStringVector2":
+                toStringVector2();
+                break;
+                // Vector3
+            case "moduleVector3":
+                moduleVector3();
+                break;
+            case "sumVector3":
+                sumVector3();
+                break;
+            case "numMultVector3":
+                numMultVector3();
+                break;
+            case "denyVector3":
+                denyVector3();
+                break;
+            case "scalarProductVector3":
+                scalarProductVector3();
+                break;
+            case "crossProductVector3":
+                crossProductVector3();
+                break;
+            case "equalsVector3":
+                equalsVector3();
+                break;
+            case "toStringVector3":
+                toStringVector3();
+                break;
+                // Vector4:
+            case "moduleVector4":
+                moduleVector4();
+                break;
+            case "sumVector4":
+                sumVector4();
+                break;
+            case "numMultVector4":
+                numMultVector4();
+                break;
+            case "denyVector4":
+                denyVector4();
+                break;
+            case "scalarProductVector4":
+                scalarProductVector4();
+                break;
+            case "equalsVector4":
+                equalsVector4();
+                break;
+            case "toStringVector4":
+                toStringVector4();
+                break;
             default:
                 System.out.println("Operación no disponible o errónea");
         }
@@ -207,6 +300,111 @@ public class Calculator {
                 result[3][3]);
 
         return matrix;
+    }
+
+    private Vector2 vector2Catcher() {
+        System.out.println("Write x point:");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double x = Double.parseDouble(input);
+
+        System.out.println("Write y point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double y = Double.parseDouble(input);
+
+        Vector2 vector = new Vector2(x, y);
+        return vector;
+    }
+
+    private Vector3 vector3Catcher() {
+        System.out.println("Write x point:");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double x = Double.parseDouble(input);
+
+        System.out.println("Write y point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double y = Double.parseDouble(input);
+
+        System.out.println("Write z point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double z = Double.parseDouble(input);
+
+        Vector3 vector = new Vector3(x, y, z);
+        return vector;
+    }
+
+    private Vector4 vector4Catcher() {
+        System.out.println("Write x point:");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double x = Double.parseDouble(input);
+
+        System.out.println("Write y point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double y = Double.parseDouble(input);
+
+        System.out.println("Write z point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double z = Double.parseDouble(input);
+
+        System.out.println("Write w point");
+        input = scanner.nextLine();
+
+        try {
+            Double.parseDouble(input);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(input + "is not a number");
+        }
+        double w = Double.parseDouble(input);
+
+        Vector4 vector = new Vector4(x, y, z, w);
+        return vector;
     }
 
     private double scalarCatcher() {
@@ -416,12 +614,191 @@ public class Calculator {
     }
 
 
+    // VECTOR2
+    public void moduleVector2() {
+        Vector2 vector = vector2Catcher();
 
-    /*public void getConsole() {
-        Scanner scanner = new Scanner(System.in);
-        input = scanner.nextLine();
-        System.out.println(input);
-    }*/
+        System.out.println("Result: " + vector.module());
+    }
+
+    public void sumVector2() {
+        Vector2 vector1 = vector2Catcher();
+        Vector2 vector2 = vector2Catcher();
+
+        vector1.sum(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void numMultVector2() {
+        Vector2 vector = vector2Catcher();
+        double num = scalarCatcher();
+
+        vector.numMult(num);
+
+        System.out.println("Result: " + vector);
+    }
+
+    public void denyVector2() {
+        Vector2 vector = vector2Catcher();
+
+        vector.deny();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+    public void ScalarProductVector2() {
+        Vector2 vector1 = vector2Catcher();
+        Vector2 vector2 = vector2Catcher();
+
+        vector1.scalarProduct(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void equalsVector2() {
+        Vector2 vector1 = vector2Catcher();
+        Vector2 vector2 = vector2Catcher();
+
+        System.out.println("Result: " + vector1.equals(vector2));
+    }
+
+    public void toStringVector2() {
+        Vector2 vector = vector2Catcher();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+
+    // VECTOR3:
+
+    public void moduleVector3() {
+        Vector3 vector = vector3Catcher();
+
+        System.out.println("Result: " + vector.module());
+    }
+
+    public void sumVector3() {
+        Vector3 vector1 = vector3Catcher();
+        Vector3 vector2 = vector3Catcher();
+
+        vector1.sum(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void numMultVector3() {
+        Vector3 vector = vector3Catcher();
+        double num = scalarCatcher();
+
+        vector.numMult(num);
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+    public void denyVector3() {
+        Vector3 vector = vector3Catcher();
+
+        vector.deny();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+    public void scalarProductVector3() {
+        Vector3 vector1 = vector3Catcher();
+        Vector3 vector2 = vector3Catcher();
+
+        vector1.scalarProduct(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void crossProductVector3() {
+        Vector3 vector1 = vector3Catcher();
+        Vector3 vector2 = vector3Catcher();
+
+        vector1.crossProduct(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void equalsVector3() {
+        Vector3 vector1 = vector3Catcher();
+        Vector3 vector2 = vector3Catcher();
+
+        System.out.println("Result: " + vector1.equals(vector2));
+    }
+
+    public void toStringVector3() {
+        Vector3 vector = vector3Catcher();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+
+    // VECTOR4
+
+    public void moduleVector4() {
+        Vector4 vector = vector4Catcher();
+
+        System.out.println("Result: " + vector.module());
+    }
+
+    public void sumVector4() {
+        Vector4 vector1 = vector4Catcher();
+        Vector4 vector2 = vector4Catcher();
+
+        vector1.sum(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void numMultVector4() {
+        Vector4 vector = vector4Catcher();
+        double num = scalarCatcher();
+
+        vector.numMult(num);
+
+        System.out.println("Result: " + vector);
+    }
+
+    public void denyVector4() {
+        Vector4 vector = vector4Catcher();
+
+        vector.deny();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+    public void scalarProductVector4() {
+        Vector4 vector1 = vector4Catcher();
+        Vector4 vector2 = vector4Catcher();
+
+        vector1.scalarProduct(vector2);
+
+        System.out.println("Result: " + vector1.toString());
+    }
+
+    public void equalsVector4() {
+        Vector4 vector1 = vector4Catcher();
+        Vector4 vector2 = vector4Catcher();
+
+        System.out.println("Result: " + vector1.equals(vector2));
+    }
+
+    public void toStringVector4() {
+        Vector2 vector = vector2Catcher();
+
+        System.out.println("Result: " + vector.toString());
+    }
+
+
+
+
+
+
+
+
 
     // Getter
     public double getResult() {
