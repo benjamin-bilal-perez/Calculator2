@@ -2,6 +2,7 @@ package calculator;
 
 import basic.BasicOperations;
 import matrix.Matrix3x3;
+import matrix.Matrix4x4;
 
 import java.util.Scanner;
 
@@ -82,12 +83,42 @@ public class Calculator {
             case "matrix3x3Multiply":
                 multiplicationMatrix3x3();
                 break;
+            case "matrix3x3ScalarMult:":
+                scalarMultmatrix3x3();
             case "matrix3x3Division":
                 divisionMatrix3x3();
                 break;
             case "matrix3x3ScalarDivision":
                 scalarDivisionmatrix3x3();
                 break;
+            case "matrix3x3Equals":
+                equalsMatrix3x3();
+                break;
+            case "matrix3x3ToString":
+                toStringMatrix3x3();
+                // Matrix4x4
+            case "matrix4x4Sum":
+                sumMatrix4x4();
+                break;
+            case "matrix4x4Subtraction":
+                subtractionMatrix4x4();
+                break;
+            case "matrix4x4Multiply":
+                multiplicationMatrix4x4();
+                break;
+            case "Matrix4x4scalarMult:":
+                scalarMultmatrix4x4();
+            case "matrix4x4Division":
+                divisionMatrix4x4();
+                break;
+            case "matrix4x4ScalarDivision":
+                scalarDivisionmatrix4x4();
+                break;
+            case "matrix4x4Equals":
+                equalsMatrix4x4();
+                break;
+            case "matrix4x4ToString":
+                toStringMatrix4x4();
             default:
                 System.out.println("Operación no disponible o errónea");
         }
@@ -115,7 +146,7 @@ public class Calculator {
         operator2 = Double.parseDouble(input);
     }
 
-    private double[][] matrix3x3Catcher() {
+    private Matrix3x3 matrix3x3Catcher() {
         double[][] result = {{0.0,0.0,0.0},{0.0,0.0,0.0},{0.0,0.0,0.0}};
 
         for (int i = 0; i < result.length; i++) {
@@ -130,7 +161,52 @@ public class Calculator {
             }
         }
 
-        return result;
+        Matrix3x3 matrix = new Matrix3x3(result[0][0],
+                result[0][1],
+                result[0][2],
+                result[1][0],
+                result[1][1],
+                result[1][2],
+                result[2][0],
+                result[2][1],
+                result[2][2]);
+
+        return matrix;
+    }
+
+    private Matrix4x4 matrix4x4Catcher() {
+        double[][] result = {{0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0},{0.0,0.0,0.0,0.0}};
+
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result.length; j++) {
+                input = scanner.nextLine();
+                try {
+                    Double.parseDouble(input);
+                } catch(NumberFormatException e) {
+                    throw new IllegalArgumentException(input + "is not a number");
+                }
+                result[i][j] = Double.parseDouble(input);
+            }
+        }
+
+        Matrix4x4 matrix = new Matrix4x4(result[0][0],
+                result[0][1],
+                result[0][2],
+                result[0][3],
+                result[1][0],
+                result[1][1],
+                result[1][2],
+                result[1][3],
+                result[2][0],
+                result[2][1],
+                result[2][2],
+                result[2][3],
+                result[3][0],
+                result[3][1],
+                result[3][2],
+                result[3][3]);
+
+        return matrix;
     }
 
     private double scalarCatcher() {
@@ -171,33 +247,13 @@ public class Calculator {
         System.out.println("Result: " + operation.getResult());
     }
 
-    // Matrix3x3
+    // MATRIX3X3
 
     public void sumMatrix3x3() {
         System.out.println("First matrix:");
-        double[][] input1 = matrix3x3Catcher();
-        System.out.println("Second matrix");
-        double[][] input2 = matrix3x3Catcher();
-
-        Matrix3x3 matrix1 = new Matrix3x3(input1[0][0],
-                input1[0][1],
-                input1[0][2],
-                input1[1][0],
-                input1[1][1],
-                input1[1][2],
-                input1[2][0],
-                input1[2][1],
-                input1[2][2]);
-
-        Matrix3x3 matrix2 = new Matrix3x3(input2[0][0],
-                input2[0][1],
-                input2[0][2],
-                input2[1][0],
-                input2[1][1],
-                input2[1][2],
-                input2[2][0],
-                input2[2][1],
-                input2[2][2]);
+        Matrix3x3 matrix1 = matrix3x3Catcher();
+        System.out.println("Second matrix:");
+        Matrix3x3 matrix2 = matrix3x3Catcher();
 
         matrix1.sum(matrix2);
 
@@ -206,29 +262,9 @@ public class Calculator {
 
     public void subtractionMatrix3x3() {
         System.out.println("First matrix:");
-        double[][] input1 = matrix3x3Catcher();
-        System.out.println("Second matrix");
-        double[][] input2 = matrix3x3Catcher();
-
-        Matrix3x3 matrix1 = new Matrix3x3(input1[0][0],
-                input1[0][1],
-                input1[0][2],
-                input1[1][0],
-                input1[1][1],
-                input1[1][2],
-                input1[2][0],
-                input1[2][1],
-                input1[2][2]);
-
-        Matrix3x3 matrix2 = new Matrix3x3(input2[0][0],
-                input2[0][1],
-                input2[0][2],
-                input2[1][0],
-                input2[1][1],
-                input2[1][2],
-                input2[2][0],
-                input2[2][1],
-                input2[2][2]);
+        Matrix3x3 matrix1 = matrix3x3Catcher();
+        System.out.println("Second matrix:");
+        Matrix3x3 matrix2 = matrix3x3Catcher();
 
         matrix1.subtraction(matrix2);
 
@@ -237,29 +273,9 @@ public class Calculator {
 
     public void multiplicationMatrix3x3() {
         System.out.println("First matrix:");
-        double[][] input1 = matrix3x3Catcher();
-        System.out.println("Second matrix");
-        double[][] input2 = matrix3x3Catcher();
-
-        Matrix3x3 matrix1 = new Matrix3x3(input1[0][0],
-                input1[0][1],
-                input1[0][2],
-                input1[1][0],
-                input1[1][1],
-                input1[1][2],
-                input1[2][0],
-                input1[2][1],
-                input1[2][2]);
-
-        Matrix3x3 matrix2 = new Matrix3x3(input2[0][0],
-                input2[0][1],
-                input2[0][2],
-                input2[1][0],
-                input2[1][1],
-                input2[1][2],
-                input2[2][0],
-                input2[2][1],
-                input2[2][2]);
+        Matrix3x3 matrix1 = matrix3x3Catcher();
+        System.out.println("Second matrix:");
+        Matrix3x3 matrix2 = matrix3x3Catcher();
 
         matrix1.multiply(matrix2);
 
@@ -268,29 +284,9 @@ public class Calculator {
 
     public void divisionMatrix3x3() {
         System.out.println("First matrix:");
-        double[][] input1 = matrix3x3Catcher();
-        System.out.println("Second matrix");
-        double[][] input2 = matrix3x3Catcher();
-
-        Matrix3x3 matrix1 = new Matrix3x3(input1[0][0],
-                input1[0][1],
-                input1[0][2],
-                input1[1][0],
-                input1[1][1],
-                input1[1][2],
-                input1[2][0],
-                input1[2][1],
-                input1[2][2]);
-
-        Matrix3x3 matrix2 = new Matrix3x3(input2[0][0],
-                input2[0][1],
-                input2[0][2],
-                input2[1][0],
-                input2[1][1],
-                input2[1][2],
-                input2[2][0],
-                input2[2][1],
-                input2[2][2]);
+        Matrix3x3 matrix1 = matrix3x3Catcher();
+        System.out.println("Second matrix:");
+        Matrix3x3 matrix2 = matrix3x3Catcher();
 
         matrix1.multiply(matrix2);
 
@@ -298,25 +294,127 @@ public class Calculator {
     }
 
     public void scalarDivisionmatrix3x3() {
-        System.out.println("Matrix:");
-        double[][] input1 = matrix3x3Catcher();
+        System.out.println("First matrix:");
+        Matrix3x3 matrix = matrix3x3Catcher();
         System.out.println("Scalar:");
         double scalar = scalarCatcher();
-
-        Matrix3x3 matrix = new Matrix3x3(input1[0][0],
-                input1[0][1],
-                input1[0][2],
-                input1[1][0],
-                input1[1][1],
-                input1[1][2],
-                input1[2][0],
-                input1[2][1],
-                input1[2][2]);
 
         matrix.scalarDivision(scalar);
 
         System.out.println("Result: " + matrix.toString());
     }
+
+    public void scalarMultmatrix3x3() {
+        System.out.println("First matrix:");
+        Matrix3x3 matrix = matrix3x3Catcher();
+        System.out.println("Scalar:");
+        double scalar = scalarCatcher();
+
+        matrix.scalarMult(scalar);
+
+        System.out.println("Result: " + matrix.toString());
+    }
+
+    public void equalsMatrix3x3() {
+        System.out.println("First matrix:");
+        Matrix3x3 matrix1 = matrix3x3Catcher();
+        System.out.println("Second matrix:");
+        Matrix3x3 matrix2 = matrix3x3Catcher();
+
+        System.out.println("Result: " + matrix1.equals(matrix2));
+    }
+
+    public void toStringMatrix3x3() {
+        System.out.println("Matrix:");
+        Matrix3x3 matrix = matrix3x3Catcher();
+
+        System.out.println("Result: " + matrix.toString());
+    }
+
+    // MATRIX4X4
+
+    public void sumMatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix1 = matrix4x4Catcher();
+        System.out.println("Second matrix:");
+        Matrix4x4 matrix2 = matrix4x4Catcher();
+
+        matrix1.sum(matrix2);
+
+        System.out.println("Result: " + matrix1.toString());
+    }
+
+    public void subtractionMatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix1 = matrix4x4Catcher();
+        System.out.println("Second matrix:");
+        Matrix4x4 matrix2 = matrix4x4Catcher();
+
+        matrix1.subtraction(matrix2);
+
+        System.out.println("Result: " + matrix1.toString());
+    }
+
+    public void multiplicationMatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix1 = matrix4x4Catcher();
+        System.out.println("Second matrix:");
+        Matrix4x4 matrix2 = matrix4x4Catcher();
+
+        matrix1.multiply(matrix2);
+
+        System.out.println("Result: " + matrix1.toString());
+    }
+
+    public void divisionMatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix1 = matrix4x4Catcher();
+        System.out.println("Second matrix:");
+        Matrix4x4 matrix2 = matrix4x4Catcher();
+
+        matrix1.multiply(matrix2);
+
+        System.out.println("Result: " + matrix1.toString());
+    }
+
+    public void scalarDivisionmatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix = matrix4x4Catcher();
+        System.out.println("Scalar:");
+        double scalar = scalarCatcher();
+
+        matrix.scalarDivision(scalar);
+
+        System.out.println("Result: " + matrix.toString());
+    }
+
+    public void scalarMultmatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix = matrix4x4Catcher();
+        System.out.println("Scalar:");
+        double scalar = scalarCatcher();
+
+        matrix.scalarMult(scalar);
+
+        System.out.println("Result: " + matrix.toString());
+    }
+
+    public void equalsMatrix4x4() {
+        System.out.println("First matrix:");
+        Matrix4x4 matrix1 = matrix4x4Catcher();
+        System.out.println("Second matrix:");
+        Matrix4x4 matrix2 = matrix4x4Catcher();
+
+        System.out.println("Result: " + matrix1.equals(matrix2));
+    }
+
+    public void toStringMatrix4x4() {
+        System.out.println("Matrix:");
+        Matrix4x4 matrix = matrix4x4Catcher();
+
+        System.out.println("Result: " + matrix.toString());
+    }
+
 
 
     /*public void getConsole() {
